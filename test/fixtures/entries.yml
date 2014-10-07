@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  paintype: MyString
+  painlevel: 1
+  painduration: 9.99
+  painplcement: MyString
+
+two:
+  paintype: MyString
+  painlevel: 1
+  painduration: 9.99
+  painplcement: MyString

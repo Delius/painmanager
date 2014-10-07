@@ -1,0 +1,6 @@
+== README
+
+Simple pain managment app using rails and backbone
+
+
+
