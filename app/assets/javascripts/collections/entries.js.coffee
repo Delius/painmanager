@@ -1,3 +1,3 @@
 class Painmanager.Collections.Entries extends Backbone.Collection
- url: '/entries'
+ url: '/api/entries'
  

@@ -1,7 +1,7 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+Entry.create!(paintype: "Abdominal Pain", painlevel: "3", painduration: "2.5", painplcement: "abdomen")
+Entry.create!(paintype: "Chronic Muscle Pain", painlevel: "1", painduration: "2.5", painplcement: "shoulder")
+Entry.create!(paintype: "Neck Pain", painlevel: "5", painduration: "2.5", painplcement: "neck")
+Entry.create!(paintype: "Shoulder Pain", painlevel: "3", painduration: "2.7", painplcement: "shoulder")
+Entry.create!(paintype: "Muscle Pain", painlevel: "2", painduration: "5.5", painplcement: "shin")
+Entry.create!(paintype: "Back Pain", painlevel: "9", painduration: "6.5", painplcement: "lower back")
+Entry.create!(paintype: "Joint Pain", painlevel: "2", painduration: "1.5", painplcement: "hand")

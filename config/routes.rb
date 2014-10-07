@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  resources :entries
-
+  scope "api" do
+    resources :entries
+  end 
   root 'main#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
