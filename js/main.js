@@ -1,3 +1,5 @@
+//Person Model
+
 var Person = Backbone.Model.extend({
 	defaults: {
 		name: 'John',
@@ -5,6 +7,14 @@ var Person = Backbone.Model.extend({
 		occupation: 'worker'
 	}
 });
+
+//A list of People
+
+var PeopleCollection = Backbone.Collection.extend({
+	model: Person
+});
+
+//View for Person
 
 var PersonView = Backbone.View.extend({
 	tagName: 'li',
@@ -21,7 +31,31 @@ var PersonView = Backbone.View.extend({
 });
 
 var person = new Person;
-var personView = new PersonView({model: person})
 
-var person2 = new Person( { name: 'Jeff', age: 21 } );
-var personView2 = new PersonView({model: person2})
+
+
+var peopleCollection = new PeopleCollection([
+
+{
+	name: 'Jeff',
+	age: 21
+
+},
+
+{
+	name: 'John',
+	age: 23
+
+},
+
+{
+	name: 'Jane',
+	age: 23
+
+}
+	]);
+
+
+
+
+console.log(peopleCollection);
