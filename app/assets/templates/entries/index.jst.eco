@@ -1,8 +1,10 @@
 <h1>Register my Pain</h1>
 
 <form id="new_entry">
-	<input type="text" name="paintype" id="new_entry_paintype">
-	<input type="submit" value="Add">
+	<ul>
+	<input type="text" name="paintype" placeholder="Enter Pain Type " id="new_entry_paintype"></ul>
+	<ul><input type="integer" name="painlevel" placeholder="Enter integer as a Pain Level 1,2,3,..." id="new_entry_paintype"></ul>
+	<ul><input type="submit" value="Add"></ul>
 </form>
 
 <ul>
