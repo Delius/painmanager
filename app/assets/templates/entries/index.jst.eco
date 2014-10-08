@@ -1,4 +1,10 @@
 <h1>Register my Pain</h1>
+
+<form id="new_entry">
+	<input type="text" name="paintype" id="new_entry_paintype">
+	<input type="submit" value="Add">
+</form>
+
 <ul>
 <% for entry in @entries.models: %>
 <li>
