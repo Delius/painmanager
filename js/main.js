@@ -14,6 +14,23 @@ var PeopleCollection = Backbone.Collection.extend({
 	model: Person
 });
 
+//View for all People
+
+var PeopleView = Backbone.View.extend({
+	tagName: 'ul',
+
+	render:function() {
+		this.collection.each(function(person) {
+			var personView = new PersonView({ model: person});
+			this.$el.append(personView.render().el);
+		}, this);
+
+
+	}
+
+
+});
+
 //View for Person
 
 var PersonView = Backbone.View.extend({
@@ -27,12 +44,11 @@ var PersonView = Backbone.View.extend({
 
 	render: function() {
 		this.$el.html( this.template(this.model.toJSON()));
+		return this;
 	}
 });
 
 var person = new Person;
-
-
 
 var peopleCollection = new PeopleCollection([
 
@@ -58,4 +74,4 @@ var peopleCollection = new PeopleCollection([
 
 
 
-console.log(peopleCollection);
+var peopleView = new PeopleView( { collection: peopleCollection } );
