@@ -59,7 +59,7 @@
 				
 				editTask: function() {
 					var newTaskTitle = prompt('What would you like to change the text to?', this.model.get('title'));
-					if ( !newTaskTitle ) return;
+					if ( ! $.trim(newTaskTitle) ) return;
 					this.model.set('title', newTaskTitle);
 
 
