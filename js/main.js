@@ -11,19 +11,45 @@
 	window.template = function(id) {
 		return _.template( $('#' + id).html() );
 	};
-	
+
 
 	App.Models.Task = Backbone.Model.extend({});
+
 	App.Collections.Tasks = Backbone.Collection.extend({
-		model: Tasks
+		model: App.Models.Task
+	});
+
+	App.Views.Tasks = Backbone.View.extend({
+		tagName: 'ul',
+
+		render: function() {
+			this.collection.each(this.addOne, this);
+			return this;
+		},
+
+		addOne: function(task) {
+			//creating a new child view
+			var taskView = new App.Views.Task({model: task});
+			//append to the root element
+			this.$el.append(taskView.render().el);
+		}
 	});
 
 
 	App.Views.Task = Backbone.View.extend({
 		tagName: 'li',
 
+		template: template('taskTemplate' ),
+		
+				events: {
+					
+				},
+		
+
+
 		render: function() {
-			this.$el.html(this.model.get('title'));
+			var template = this.template(this.model.toJSON() );
+			this.$el.html(template);
 			return this;
 		}
 	});
@@ -46,7 +72,9 @@
 	]);
 
 
+	var taskView = new App.Views.Tasks({ collection: tasks});
 
-
+	//console.log(taskView.el);
+	$('.tasks').html(taskView.render().el);
 
 })();
