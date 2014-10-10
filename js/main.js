@@ -125,6 +125,7 @@
 
 	]);
 
+
 	var addTaskView = new App.Views.AddTask({ collection: tasks});
 	var taskView = new App.Views.Tasks({ collection: tasks});
 
