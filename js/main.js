@@ -1,135 +1,29 @@
 (function() {
 
-	window.App = {
-		Models: {},
-		Collections: {},
-		Views: {}
-	};
+    window.App = {
+        Models: {},
+        Collections: {},
+        Views: {},
+        Router: {}
+    };
 
 
-//Helper method for template
-	window.template = function(id) {
-		return _.template( $('#' + id).html() );
-	};
 
 
-	App.Models.Task = Backbone.Model.extend({
-	validate: function(attrs) {
-		if ( ! $.trim(attrs.title) ) {
-			return 'A task requires a valid title.';
-		}
-	}
-});
+    App.Router = Backbone.Router.extend({
+        routes: {
+            '': 'index',
+            'show': 'show'
+        },
 
-	App.Collections.Tasks = Backbone.Collection.extend({
-		model: App.Models.Task
-	});
-
-	App.Views.Tasks = Backbone.View.extend({
-		tagName: 'ul',
-
-		initialize: function() {
-			this.collection.on('add', this.addOne, this)
-		},
-
-		render: function() {
-			this.collection.each(this.addOne, this);
-			return this;
-		},
-
-		addOne: function(task) {
-			//creating a new child view
-			var taskView = new App.Views.Task({model: task});
-			//append to the root element
-			this.$el.append(taskView.render().el);
-		}
-	});
+        index: function(){
+            console.log('hi from the index page')
+        }
 
 
-	App.Views.Task = Backbone.View.extend({
-		tagName: 'li',
+    });
 
-		template: template('taskTemplate'),
-
-		initialize: function() {
-			this.model.on('change', this.render, this );
-			this.model.on('destroy', this.remove, this );
-		},
-		
-				events: {
-					'click .edit': 'editTask',
-					'click .delete': 'destroy'
-				},
-				
-				editTask: function() {
-					var newTaskTitle = prompt('What would you like to change the text to?', this.model.get('title'));
-					if ( ! $.trim(newTaskTitle) ) return;
-					this.model.set('title', newTaskTitle);
-
-
-				},
-
-				destroy: function() {
-					this.model.destroy();
-				},
-
-				remove: function() {
-					this.$el.remove();
-				},
-
-
-		render: function() {
-			var template = this.template(this.model.toJSON() );
-			this.$el.html(template);
-			return this;
-		}
-	});
-
-	App.Views.AddTask = Backbone.View.extend({
-		el: '#addTask',
-
-		events: {
-			'submit': 'submit'
-		},
-
-		initialize: function() {
-
-		},
-
-		submit: function(e) {
-			e.preventDefault();
-			var newTaskTitle = $(e.currentTarget).find('input[type=text]').val();
-			
-			var task = new App.Models.Task({title: newTaskTitle});
-			this.collection.add(task);
-
-			// console.log(task);
-
-
-		}
-	});
-
-	window.tasks = new App.Collections.Tasks([
-	{
-		title: 'Go to the Store',
-		priority: 4
-	},
-	{
-		title: 'Go to the mall',
-		priority: 2
-	},
-	{
-		title: 'Go to work',
-		priority: 5
-	}
-
-	]);
-
-
-	var addTaskView = new App.Views.AddTask({ collection: tasks});
-	var taskView = new App.Views.Tasks({ collection: tasks});
-
-	//console.log(taskView.el);
-	$('.tasks').html(taskView.render().el);
+    new App.Router;
+    Backbone.history.start();
 
 })();
