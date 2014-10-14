@@ -3137,7 +3137,7 @@
 
     // Contain and manage the composite application as a whole.
     // Stores and starts up `Region` objects, includes an
-    // event aggregator as `app.vent`
+    // event aggregator as `apps.vent`
     Marionette.Application = function(options) {
         this.options = options;
         this._initializeRegions(options);
@@ -3172,14 +3172,14 @@
 
         // kick off all of the application's processes.
         // initializes all of the regions that have been added
-        // to the app, and runs all of the initializer functions
+        // to the apps, and runs all of the initializer functions
         start: function(options) {
             this.triggerMethod('before:start', options);
             this._initCallbacks.run(options, this);
             this.triggerMethod('start', options);
         },
 
-        // Add regions to your app.
+        // Add regions to your apps.
         // Accepts a hash of named strings or Region objects
         // addRegions({something: "#someRegion"})
         // addRegions({something: Region.extend({el: "#someRegion"}) });
@@ -3187,12 +3187,12 @@
             return this._regionManager.addRegions(regions);
         },
 
-        // Empty all regions in the app, without removing them
+        // Empty all regions in the apps, without removing them
         emptyRegions: function() {
             return this._regionManager.emptyRegions();
         },
 
-        // Removes a region from your app, by name
+        // Removes a region from your apps, by name
         // Accepts the regions name
         // removeRegion('myRegion')
         removeRegion: function(region) {
@@ -3318,7 +3318,7 @@
 
         this._setupInitializersAndFinalizers();
 
-        // Set an internal reference to the app
+        // Set an internal reference to the apps
         // within a module.
         this.app = app;
 
@@ -3439,7 +3439,7 @@
     // Class methods to create modules
     _.extend(Marionette.Module, {
 
-        // Create a module, hanging off the app parameter as the parent object.
+        // Create a module, hanging off the apps parameter as the parent object.
         create: function(app, moduleNames, moduleDefinition) {
             var module = app;
 
