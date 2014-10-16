@@ -1,13 +1,13 @@
-@Demo.module "HeaderApp.List", (List, App, Backbone, Marionette, $,_) ->
-
-  List.Controller =
-
-    listHeader: ->
-      headerView = @getHeaderView()
-
-#      insert ths view in to header region
-      App.headerRegion.show headerView
-
-
-    getHeaderView: ->
-      new List.Header
+@Demo.module "HeaderApp.List", (List, App, Backbone, Marionette, $, _) ->
+	
+	List.Controller =
+		
+		listHeader: ->
+			links = App.request "header:entities"
+			
+			headerView = @getHeaderView links
+			App.headerRegion.show headerView
+		
+		getHeaderView: (links) ->
+			new List.Headers
+				collection: links
