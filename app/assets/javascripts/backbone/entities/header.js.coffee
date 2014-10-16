@@ -9,7 +9,7 @@
 		getHeaders: ->
 			new Entities.HeaderCollection [
 				{ name: "Users" }
-				{ name: "Leads" }
+				{ name: "Pain Records" }
 				{ name: "Appointments" }
 			]
 	
