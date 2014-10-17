@@ -10,6 +10,7 @@ gem 'thin'
 gem 'rabl'
 # JSON parser
 gem 'oj'
+gem 'gon'
 
 
 # Gems used only for assets and not required
