@@ -2,11 +2,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
 	def index
-		
 		gon.rabl
-		# gon.foo = "bar"
-		# to include all usefull data properties: pass rabl
-		
+		@user = User.first ##just an example of an authenticated user
+		gon.rabl "app/views/users/show.json.rabl", as: "current_user"
 	end
 	
 end
