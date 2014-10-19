@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+ class User < ActiveRecord::Base
   attr_accessible :first_name, :last_name
 
   def full_name
