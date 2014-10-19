@@ -8,9 +8,9 @@
 	API =
 		getHeaders: ->
 			new Entities.HeaderCollection [
-				{ name: "Users" }
-				{ name: "Pain Records" }
-				{ name: "Appointments" }
+				{ name: "Users", url: Routes.users_path() }
+				{ name: "Pain Records", url: Routes.leads_path() }
+				{ name: "Tips", url: "appointments" }
 			]
 	
 	App.reqres.addHandler "header:entities", ->

@@ -8,4 +8,4 @@
 			App.footerRegion.show footerView
 		
 		getFooterView: ->
-			new Show.Footer 
+			new Show.Footer

@@ -1,11 +1,7 @@
 object false
 
-# generating own custom node
-
-node do 
+node do
 	{
-		#show, hide diagnostic , errors 
-		
 		:environment => Rails.env,
 	}
 end

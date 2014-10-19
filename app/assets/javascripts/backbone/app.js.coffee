@@ -23,6 +23,5 @@
 		if Backbone.history
 			Backbone.history.start()
 			@navigate(@rootRoute, trigger: true) if @getCurrentRoute() is ""
-
 	
 	App
